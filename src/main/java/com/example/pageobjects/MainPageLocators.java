@@ -15,4 +15,6 @@ public class MainPageLocators {
 
     // Панель ответа в аккордеоне
     public static final By QUESTION_PANELS = By.className("accordion__panel");
+    //Содержимое аккордеона
+    public static final By ORDER_PAGE_HEADER = By.className("Order_Header__BZXOb");
 }

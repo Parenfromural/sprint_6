@@ -1,23 +1,17 @@
 import com.example.pageobjects.MainPage;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MainPageTest {
-    private WebDriver driver;
+public class MainPageTest extends BaseTest {
     private MainPage mainPage;
 
     @BeforeEach
-    public void setUp() {
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru");
+    public void initPageObject() {
         mainPage = new MainPage(driver);
     }
 
@@ -42,14 +36,7 @@ public class MainPageTest {
     public void testOrderButtonNavigation() {
         mainPage.clickOrderButtonTop();
         String expectedHeader = "Для кого самокат";
-        String actualHeader = driver.findElement(By.className("Order_Header__BZXOb")).getText();
+        String actualHeader = mainPage.getOrderPageHeaderText();
         assertEquals(expectedHeader, actualHeader);
-    }
-
-    @AfterEach
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 }

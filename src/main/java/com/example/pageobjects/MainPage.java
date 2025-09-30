@@ -35,4 +35,8 @@ public class MainPage {
     public String getQuestionAnswer(int index) {
         return driver.findElements(MainPageLocators.QUESTION_PANELS).get(index).getText();
     }
+
+    public String getOrderPageHeaderText() {
+        return driver.findElement(MainPageLocators.ORDER_PAGE_HEADER).getText();
+    }
 }
